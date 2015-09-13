@@ -1,5 +1,4 @@
 # docker-hadoop-cluster
-====
 
 Multiple node cluster on Docker for self development.
 
