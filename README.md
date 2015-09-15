@@ -38,13 +38,13 @@ $ docker build -t lewuathe/hadoop-slave
 First master node should be launched.
 
 ```
-$ docker run -d -p 50070:50070 -p 8088:8088 --name nn lewuathe/hadoop-master
+$ docker run -d -p 50070:50070 -p 8088:8088 --name nn -h nn lewuathe/hadoop-master
 ```
 
 Second slave node is launched.
 
 ```
-$ docker run --name dn1 lewuathe/hadoop-slave
+$ docker run --name dn1 -h dn1 lewuathe/hadoop-slave
 ```
 
 # Login cluster
