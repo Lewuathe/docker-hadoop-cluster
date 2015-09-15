@@ -12,7 +12,7 @@ In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 ```
 $ cp hadoop-3.0.0-SNAPSHOT.tar.gz hadoop-base
 $ cd hadoop-base
-$ docker build -t lewuathe/hadoop-base 
+$ docker build -t lewuathe/hadoop-base . 
 ```
 
 ## hadoop-master
@@ -21,7 +21,7 @@ This image includes master service such as namenode and resource manager.
 
 ```
 $ cd hadoop-master
-$ docker build -t lewuathe/hadoop-master
+$ docker build -t lewuathe/hadoop-master .
 ```
 
 ## hadoop-slave
@@ -30,7 +30,7 @@ This image includes slave service such as datanode and node manager.
 
 ```
 $ cd hadoop-slave
-$ docker build -t lewuathe/hadoop-slave
+$ docker build -t lewuathe/hadoop-slave .
 ```
 
 # Running cluster
@@ -44,7 +44,7 @@ $ docker run -d -p 50070:50070 -p 8088:8088 --name nn -h nn lewuathe/hadoop-mast
 Second slave node is launched.
 
 ```
-$ docker run --name dn1 -h dn1 lewuathe/hadoop-slave
+$ docker run -d --name dn1 -h dn1 lewuathe/hadoop-slave
 ```
 
 # Login cluster
