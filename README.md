@@ -47,6 +47,13 @@ Second slave node is launched.
 $ docker run -d --name dn1 -h dn1 lewuathe/hadoop-slave
 ```
 
+Or you can use build script.
+
+```
+$ bin/build_cluster.sh --slaves 5 launch
+$ bin/build_cluster.sh --slaves 5 destroy
+```
+
 # Login cluster
 
 ```
