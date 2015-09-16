@@ -45,12 +45,12 @@ RUN mkdir -p /tmp/native
 RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.7.0.tar | tar -x -C /tmp/native
 
 # hadoop
-#RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.7.0/hadoop-2.7.0.tar.gz | tar -xz -C /usr/local/
-#RUN cd /usr/local && ln -s ./hadoop-2.7.0 hadoop
+RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.7.0/hadoop-2.7.0.tar.gz | tar -xz -C /usr/local/
+RUN cd /usr/local && ln -s ./hadoop-2.7.0 hadoop
 
-ADD hadoop-3.0.0-SNAPSHOT.tar.gz /usr/local/
-WORKDIR /usr/local
-RUN ln -s /usr/local/hadoop-3.0.0-SNAPSHOT /usr/local/hadoop
+#ADD hadoop-3.0.0-SNAPSHOT.tar.gz /usr/local/
+#WORKDIR /usr/local
+#RUN ln -s /usr/local/hadoop-3.0.0-SNAPSHOT /usr/local/hadoop
 
 
 ENV HADOOP_PREFIX /usr/local/hadoop
