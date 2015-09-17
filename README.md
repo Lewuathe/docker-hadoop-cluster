@@ -2,6 +2,16 @@
 
 Multiple node cluster on Docker for self development.
 
+# Pull image
+If you want to use latest hadoop version in docker cluster, all you have to do is pull build images.
+Just after that, you can run your cluster on Docker. 
+
+```bash
+$ docker pull lewuathe/hadoop-base
+$ docker pull lewuathe/hadoop-master
+$ docker pull lewuathe/hadoop-slave
+```
+
 # Build images
 
 ## hadoop-base
@@ -9,7 +19,7 @@ Multiple node cluster on Docker for self development.
 Base image of hadoop service. This image includes JDK, hadoop package configurations etc. This image can include your self-build hadoop package.
 In order to bind, tar.gz package assumed be put under `hadoop-base` directory. 
 
-```
+```bash
 $ cp hadoop-3.0.0-SNAPSHOT.tar.gz hadoop-base
 $ cd hadoop-base
 $ docker build -t lewuathe/hadoop-base . 
@@ -19,7 +29,7 @@ $ docker build -t lewuathe/hadoop-base .
 
 This image includes master service such as namenode and resource manager.
 
-```
+```bash
 $ cd hadoop-master
 $ docker build -t lewuathe/hadoop-master .
 ```
@@ -28,7 +38,7 @@ $ docker build -t lewuathe/hadoop-master .
 
 This image includes slave service such as datanode and node manager.
 
-```
+```bash
 $ cd hadoop-slave
 $ docker build -t lewuathe/hadoop-slave .
 ```
@@ -37,26 +47,26 @@ $ docker build -t lewuathe/hadoop-slave .
 
 First master node should be launched.
 
-```
+```bash
 $ docker run -d -p 50070:50070 -p 8088:8088 --name nn -h nn lewuathe/hadoop-master
 ```
 
 Second slave node is launched.
 
-```
+```bash
 $ docker run -d --name dn1 -h dn1 lewuathe/hadoop-slave
 ```
 
 Or you can use build script.
 
-```
+```bash
 $ bin/build_cluster.sh --slaves 5 launch
 $ bin/build_cluster.sh --slaves 5 destroy
 ```
 
 # Login cluster
 
-```
+```bash
 $ docker exec -it nn bash
 bash-4.1# cd /usr/local/hadoop
 bash-4.1# bin/hadoop version
@@ -67,6 +77,12 @@ Compiled with protoc 2.5.0
 From source with checksum 9174a352ac823cdfa576f525665e99
 This command was run using /usr/local/hadoop-3.0.0-SNAPSHOT/share/hadoop/common/hadoop-common-3.0.0-SNAPSHOT.jar
 ```
+
+# Docker Hub
+
+* [hadoop-base](https://hub.docker.com/r/lewuathe/hadoop-base/)
+* [hadoop-master](https://hub.docker.com/r/lewuathe/hadoop-master/)
+* [hadoop-slave](https://hub.docker.com/r/lewuathe/hadoop-slave/)
 
 # License
 
