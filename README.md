@@ -22,7 +22,13 @@ In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 ```bash
 $ cp hadoop-3.0.0-SNAPSHOT.tar.gz hadoop-base
 $ cd hadoop-base
-$ docker build -t lewuathe/hadoop-base . 
+$ docker build -f Dockerfile-local -t lewuathe/hadoop-base .
+```
+
+When you want to create released hadoop image(it's 2.7.0 currently), you can build with `Dockerfile`
+
+```bash
+$ docker build -t lewuathe/hadoop-base .
 ```
 
 ## hadoop-master
