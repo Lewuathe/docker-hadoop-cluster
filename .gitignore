@@ -1,3 +1,4 @@
 *.idea
 *.iml
 *.tar.gz
+bin/*.hosts
