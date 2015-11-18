@@ -8,6 +8,7 @@ print_usage() {
   echo ""
   echo "    launch  : Launch hadoop cluster on docker"
   echo "    destroy : Remove hadoop cluster on docker"
+  echo "    build   : Build docker images with local hadoop binary"
   echo ""
   echo "    Options:"
   echo "        -h,  --help      : Print usage"
@@ -63,7 +64,6 @@ launch_cluster() {
     docker cp $DIR/${CLUSTER_NAME}.hosts dn${i}:/tmp/ 
     docker exec dn${i} sh -c "cat /tmp/${CLUSTER_NAME}.hosts >> /etc/hosts"
   done
-
 }
 
 destroy_cluster() {
@@ -73,10 +73,21 @@ destroy_cluster() {
   done
 }
 
+build_images() {
+  cd $DIR/../hadoop-base
+  docker build -f Dockerfile-local -t lewuathe/hadoop-base .
+  cd $DIR/../hadoop-master
+  docker build -t lewuathe/hadoop-master .
+  cd $DIR/../hadoop-slave
+  docker build -t lewuathe/hadoop-slave .
+}
+
 case $1 in
     launch) launch_cluster
         ;;
     destroy) destroy_cluster
+        ;;
+    build) build_images
         ;;
 esac
 
