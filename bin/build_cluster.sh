@@ -52,17 +52,12 @@ do
 done
 
 launch_cluster() {
-  docker run -d -p 50070:50070 -p 8088:8088 --name nn -h nn lewuathe/hadoop-master
+  if ! docker network inspect hadoop-network > /dev/null ; then
+    docker network create --driver bridge hadoop-network
+  fi
+  docker run -d -p 50070:50070 -p 8088:8088 --net hadoop-network --name nn -h nn lewuathe/hadoop-master
   for i in `seq 1 $DATANODE_NUM`; do
-    docker run -d --name dn${i} -h dn${i} --link nn lewuathe/hadoop-slave
-  done
-
-  $DIR/resolv_host.py $DATANODE_NUM > $DIR/${CLUSTER_NAME}.hosts
-  docker cp $DIR/${CLUSTER_NAME}.hosts nn:/tmp/
-  docker exec nn sh -c "cat /tmp/${CLUSTER_NAME}.hosts >> /etc/hosts"
-  for i in `seq 1 $DATANODE_NUM`; do
-    docker cp $DIR/${CLUSTER_NAME}.hosts dn${i}:/tmp/ 
-    docker exec dn${i} sh -c "cat /tmp/${CLUSTER_NAME}.hosts >> /etc/hosts"
+    docker run -d --name dn${i} -h dn${i} --net hadoop-network lewuathe/hadoop-slave
   done
 }
 
