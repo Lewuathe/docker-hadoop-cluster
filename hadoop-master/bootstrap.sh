@@ -15,8 +15,9 @@ cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; 
 #sed s/RESOURCEMANAGER/$HOSTNAME/ /usr/local/hadoop/etc/hadoop/yarn-site.xml.template.template > /usr/local/hadoop/etc/hadoop/yarn-site.xml.template
 
 service sshd start
-nohup $HADOOP_PREFIX/bin/hdfs namenode 2>> /var/log/hadoop/nn.err > /var/log/hadoop/nn.out &
-nohup $HADOOP_PREFIX/bin/yarn resourcemanager 2>> /var/log/hadoop/rm.err > /var/log/hadoop/rm.out &
+nohup $HADOOP_PREFIX/bin/hdfs namenode 2>> /var/log/hadoop/namenode.err > /var/log/hadoop/namenode.out &
+nohup $HADOOP_PREFIX/bin/yarn resourcemanager 2>> /var/log/hadoop/resourcemanager.err > /var/log/hadoop/resourcemanager.out &
+nohup $HADOOP_PREFIX/bin/mapred historyserver 2>> /var/log/hadoop/historyserver.err > /var/log/hadoop/historyserver.out &
 
 if [[ $1 == "-d" ]]; then
     while true; do sleep 1000; done
