@@ -12,20 +12,19 @@
 #
 # Creates multi node hadoop cluster on Docker
 
-FROM sequenceiq/pam:centos-6.5
+FROM sequenceiq/pam:ubuntu-14.04
 MAINTAINER lewuathe
 
 USER root
 
 
 # install dev tools
-RUN yum clean all; \
-    rpm --rebuilddb; \
-        yum install -y curl which tar sudo openssh-server openssh-clients rsync
-        # update libselinux. see https://github.com/sequenceiq/hadoop-docker/issues/14
-        RUN yum update -y libselinux
+RUN apt-get update
+RUN apt-get install -y curl tar sudo openssh-server openssh-client rsync
 
 # passwordless ssh
+# passwordless ssh
+RUN rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_rsa_key /root/.ssh/id_rsa
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
@@ -33,9 +32,9 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 
 # java
-RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie'
-RUN rpm -i jdk-7u71-linux-x64.rpm
-RUN rm jdk-7u71-linux-x64.rpm
+RUN mkdir -p /usr/java/default && \
+    curl -Ls 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accept-securebackup-cookie' | \
+    tar --strip-components=1 -xz -C /usr/java/default/
 
 ENV JAVA_HOME /usr/java/default
 ENV PATH $PATH:$JAVA_HOME/bin
