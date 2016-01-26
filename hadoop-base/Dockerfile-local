@@ -17,19 +17,16 @@ MAINTAINER lewuathe
 
 USER root
 
-
 # install dev tools
 RUN apt-get update
 RUN apt-get install -y curl tar sudo openssh-server openssh-client rsync
 
-# passwordless ssh
 # passwordless ssh
 RUN rm -f /etc/ssh/ssh_host_dsa_key /etc/ssh/ssh_host_rsa_key /root/.ssh/id_rsa
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
-
 
 # java
 RUN mkdir -p /usr/java/default && \
@@ -87,7 +84,7 @@ RUN sed  -i "/^[^#]*UsePAM/ s/.*/#&/"  /etc/ssh/sshd_config
 RUN echo "UsePAM no" >> /etc/ssh/sshd_config
 RUN echo "Port 2122" >> /etc/ssh/sshd_config
 
-RUN service sshd start
+RUN service ssh start
 
 # Hdfs ports
 EXPOSE 9000 50010 50020 50070 50075 50090
