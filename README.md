@@ -49,18 +49,25 @@ $ cd hadoop-slave
 $ docker build -t lewuathe/hadoop-slave .
 ```
 
+Or you can build images with build_cluster.sh command.
+
+```bash
+$ cd docker-hadoop-cluster
+$ bin/build_cluster.sh build
+```
+
 # Running cluster
 
 First master node should be launched.
 
 ```bash
-$ docker run -d -p 50070:50070 -p 8088:8088 --name nn -h nn lewuathe/hadoop-master
+$ docker run -d -p 50070:50070 -p 8088:8088 --net hadoop-network --name master -h master lewuathe/hadoop-master
 ```
 
 Second slave node is launched.
 
 ```bash
-$ docker run -d --name dn1 -h dn1 lewuathe/hadoop-slave
+$ docker run -d --name slave1 -h slave1 --net hadoop-network lewuathe/hadoop-slave
 ```
 
 Or you can use build script.
@@ -73,7 +80,7 @@ $ bin/build_cluster.sh --slaves 5 destroy
 # Login cluster
 
 ```bash
-$ docker exec -it nn bash
+$ docker exec -it master bash
 bash-4.1# cd /usr/local/hadoop
 bash-4.1# bin/hadoop version
 Hadoop 3.0.0-SNAPSHOT
