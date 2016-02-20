@@ -2,7 +2,7 @@
 
 PROGNAME=$(basename $0)
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
- 
+
 print_usage() {
   echo "Usage: $0 [launch|destroy]"
   echo ""
@@ -55,7 +55,7 @@ launch_cluster() {
   if ! docker network inspect hadoop-network > /dev/null ; then
     docker network create --driver bridge hadoop-network
   fi
-  docker run -d -p 50070:50070 -p 8088:8088 -p 19888:19888 --net hadoop-network --name master -h master lewuathe/hadoop-master
+  docker run -d -p 50070:50070 -p 8088:8088 -p 19888:19888 -p 8188:8188 --net hadoop-network --name master -h master lewuathe/hadoop-master
   for i in `seq 1 $DATANODE_NUM`; do
     docker run -d --name slave${i} -h slave${i} --net hadoop-network lewuathe/hadoop-slave
   done
@@ -87,4 +87,3 @@ case $1 in
 esac
 
 exit 0
-
