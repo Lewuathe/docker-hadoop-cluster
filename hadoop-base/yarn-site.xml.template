@@ -41,4 +41,21 @@
         <name>yarn.resourcemanager.resource-tracker.address</name>
         <value>RESOURCEMANAGER:8031</value>
     </property>
+
+    <property>
+        <name>yarn.timeline-service.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.timeline-service.hostname</name>
+        <value>master</value>
+    </property>
+    <property>
+        <name>yarn.timeline-service.generic-application-history.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
+        <value>true</value>
+    </property>
 </configuration>
