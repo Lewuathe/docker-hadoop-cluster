@@ -66,6 +66,7 @@ destroy_cluster() {
   for i in `seq 1 $DATANODE_NUM`; do
     docker kill slave${i}; docker rm slave${i}
   done
+  docker network rm hadoop-network
 }
 
 build_images() {
