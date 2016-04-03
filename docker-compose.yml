@@ -2,7 +2,7 @@ version: '2'
 
 services:
   master:
-    image: lewuathe/hadoop-master
+    build: ./hadoop-master
     ports:
       - "50070:50070"
       - "8088:8088"
@@ -10,11 +10,11 @@ services:
       - "8188:8188"
     container_name: "master"
   slave1:
-    image: lewuathe/hadoop-slave
+    build: ./hadoop-slave
     container_name: "slave1"
   slave2:
-    image: lewuathe/hadoop-slave
+    build: ./hadoop-slave
     container_name: "slave2"
   slave3:
-    image: lewuathe/hadoop-slave
+    build: ./hadoop-slave
     container_name: "slave3"
