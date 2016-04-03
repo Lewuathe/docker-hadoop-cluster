@@ -4,7 +4,7 @@ Multiple node cluster on Docker for self development.
 
 # Pull image
 If you want to use latest hadoop version in docker cluster, all you have to do is pull build images.
-Just after that, you can run your cluster on Docker. 
+Just after that, you can run your cluster on Docker.
 
 ```bash
 $ docker pull lewuathe/hadoop-base
@@ -17,13 +17,22 @@ $ docker pull lewuathe/hadoop-slave
 ## hadoop-base
 
 Base image of hadoop service. This image includes JDK, hadoop package configurations etc. This image can include your self-build hadoop package.
-In order to bind, tar.gz package assumed be put under `hadoop-base` directory. 
+In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 
 ```bash
 $ cp hadoop-3.0.0-SNAPSHOT.tar.gz hadoop-base
 $ cd hadoop-base
 $ docker build -f Dockerfile-local -t lewuathe/hadoop-base .
 ```
+
+Once you build `hadoop-base` image, you can launch hadoop cluster by using docker-compose.
+
+```
+$ docker-compose up -d
+```
+
+See http://<Docker IP>:50070 or http://<Docker IP>:8088.
+
 
 When you want to create released hadoop image(it's 2.7.0 currently), you can build with `Dockerfile`
 
