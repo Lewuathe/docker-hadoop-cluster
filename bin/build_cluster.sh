@@ -57,7 +57,7 @@ launch_cluster() {
   fi
   docker run -d -p 50070:50070 -p 8088:8088 -p 19888:19888 -p 8188:8188 --net hadoop-network --name master -h master lewuathe/hadoop-master
   for i in `seq 1 $DATANODE_NUM`; do
-    docker run -d --name slave${i} -h slave${i} --net hadoop-network lewuathe/hadoop-slave
+    docker run -d -p 50075:50075 -p 8042:8042 --name slave${i} -h slave${i} --net hadoop-network lewuathe/hadoop-slave
   done
 }
 
