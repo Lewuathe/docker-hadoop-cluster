@@ -55,9 +55,9 @@ launch_cluster() {
   if ! docker network inspect hadoop-network > /dev/null ; then
     docker network create --driver bridge hadoop-network
   fi
-  docker run -d -p 50070:50070 -p 8088:8088 -p 19888:19888 -p 8188:8188 --net hadoop-network --name master -h master lewuathe/hadoop-master
+  docker run -d -p 50070:50070 -p 8088:8088 -p 19888:19888 -p 8188:8188 --net hadoop-network --name master -h master lewuathe/hadoop-master:latest
   for i in `seq 1 $DATANODE_NUM`; do
-    docker run -d -p 5007${i}:50075 -p 804${i}:8042 --name slave${i} -h slave${i} --net hadoop-network lewuathe/hadoop-slave
+    docker run -d -p 5007${i}:50075 -p 804${i}:8042 --name slave${i} -h slave${i} --net hadoop-network lewuathe/hadoop-slave:latest
   done
 }
 
@@ -71,11 +71,11 @@ destroy_cluster() {
 
 build_images() {
   cd $DIR/../hadoop-base
-  docker build -f Dockerfile-local -t lewuathe/hadoop-base .
+  docker build -f Dockerfile-local -t lewuathe/hadoop-base:latest .
   cd $DIR/../hadoop-master
-  docker build -t lewuathe/hadoop-master .
+  docker build -t lewuathe/hadoop-master:latest .
   cd $DIR/../hadoop-slave
-  docker build -t lewuathe/hadoop-slave .
+  docker build -t lewuathe/hadoop-slave:latest .
 }
 
 case $1 in
