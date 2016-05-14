@@ -40,9 +40,9 @@ ENV PATH $PATH:$JAVA_HOME/bin
 RUN mkdir -p /tmp/native
 RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.7.0.tar | tar -x -C /tmp/native
 
-ADD hadoop-3.0.0-SNAPSHOT.tar.gz /usr/local/
+ADD hadoop-3.0.0-alpha1-SNAPSHOT.tar.gz /usr/local/
 WORKDIR /usr/local
-RUN ln -s /usr/local/hadoop-3.0.0-SNAPSHOT /usr/local/hadoop
+RUN ln -s /usr/local/hadoop-3.0.0-alpha1-SNAPSHOT /usr/local/hadoop
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 ENV HADOOP_COMMON_HOME /usr/local/hadoop
@@ -50,7 +50,8 @@ ENV HADOOP_HDFS_HOME /usr/local/hadoop
 ENV HADOOP_MAPRED_HOME /usr/local/hadoop
 ENV HADOOP_YARN_HOME /usr/local/hadoop
 ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
-ENV YARN_CONF_DIR $HADOOP_PREFIX/etc/hadoop
+ENV YARN_CONF_DIR /usr/local/hadoop/etc/hadoop
+ENV HADOOP_LOG_DIR /var/log/hadoop
 
 RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/java/default\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
