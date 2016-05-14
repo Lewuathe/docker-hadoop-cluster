@@ -22,9 +22,6 @@ RUN chmod 700 /etc/bootstrap.sh
 RUN sed s/HOSTNAME/master/ $HADOOP_PREFIX/etc/hadoop/core-site.xml.template > $HADOOP_PREFIX/etc/hadoop/core-site.xml
 RUN sed s/RESOURCEMANAGER/master/ $HADOOP_PREFIX/etc/hadoop/yarn-site.xml.template > $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
 
-RUN mkdir /var/log/hadoop
-
 ENV BOOTSTRAP /etc/bootstrap.sh
 
 CMD ["/etc/bootstrap.sh", "-d"]
-
