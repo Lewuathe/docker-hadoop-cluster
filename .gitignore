@@ -2,3 +2,5 @@
 *.iml
 *.tar.gz
 bin/*.hosts
+
+*.pyc
