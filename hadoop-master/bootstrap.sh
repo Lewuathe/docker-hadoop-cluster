@@ -16,6 +16,7 @@ cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; 
 
 service sshd start
 nohup $HADOOP_PREFIX/bin/hdfs namenode &
+sleep 5
 nohup $HADOOP_PREFIX/bin/yarn resourcemanager &
 nohup $HADOOP_PREFIX/bin/yarn timelineserver &
 nohup $HADOOP_PREFIX/bin/mapred historyserver &
