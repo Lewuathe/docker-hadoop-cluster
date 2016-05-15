@@ -100,6 +100,16 @@ From source with checksum 9174a352ac823cdfa576f525665e99
 This command was run using /usr/local/hadoop-3.0.0-SNAPSHOT/share/hadoop/common/hadoop-common-3.0.0-SNAPSHOT.jar
 ```
 
+# Deploy on EC2
+
+We can run docker-hadoop-cluster on EC2 instance with `ec2/` script.
+
+```
+$ python ec2/ec2.py -k <Key Name> -s <Security Group ID> -n <Subnet ID> launch
+```
+
+This script launch EC2 instance and prepare prerequisites to launch docker-hadoop-cluster.
+
 # Docker Hub
 
 * [hadoop-base](https://hub.docker.com/r/lewuathe/hadoop-base/)
