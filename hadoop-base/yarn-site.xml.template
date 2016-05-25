@@ -64,6 +64,7 @@
     </property>
 
     <!-- NAMENODE must be same to RESOURCEMANAGER in this configuration -->
+    <!-- Disable due to HDFS initialization timing issue
     <property>
       <name>yarn.node-labels.fs-store.root-dir</name>
       <value>hdfs://RESOURCEMANAGER:9000/node-labels/</value>
@@ -72,4 +73,5 @@
       <name>yarn.node-labels.enabled</name>
       <value>true</value>
     </property>
+    -->
 </configuration>
