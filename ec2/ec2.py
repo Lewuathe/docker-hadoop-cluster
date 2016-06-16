@@ -40,6 +40,8 @@ def launch(key_name, security_group, subnet_id):
     local("fab -f ./ec2/fabfile.py -i ~/.ssh/{}.pem -u ec2-user -H {} deploy".format(key_name, public_ip))
     print('Succeed to launch instance')
     print('    InstanceId: {}, PublicIp: {}'.format(instance_id, public_ip))
+    print('Login')
+    print('    ssh -i ~/.ssh/{}.pem ec2-user@{}'.format(key_name, public_ip))
 
 def terminate(instance_id):
     client = boto3.client('ec2')
