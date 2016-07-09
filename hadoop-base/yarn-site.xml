@@ -31,15 +31,15 @@
 
     <property>
         <name>yarn.resourcemanager.address</name>
-        <value>RESOURCEMANAGER:8032</value>
+        <value>master:8032</value>
     </property>
     <property>
         <name>yarn.resourcemanager.scheduler.address</name>
-        <value>RESOURCEMANAGER:8030</value>
+        <value>master:8030</value>
     </property>
     <property>
         <name>yarn.resourcemanager.resource-tracker.address</name>
-        <value>RESOURCEMANAGER:8031</value>
+        <value>master:8031</value>
     </property>
 
     <property>
@@ -67,7 +67,7 @@
     <!-- Disable due to HDFS initialization timing issue
     <property>
       <name>yarn.node-labels.fs-store.root-dir</name>
-      <value>hdfs://RESOURCEMANAGER:9000/node-labels/</value>
+      <value>hdfs://master:9000/node-labels/</value>
     </property>
     <property>
       <name>yarn.node-labels.enabled</name>

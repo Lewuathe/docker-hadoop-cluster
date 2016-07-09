@@ -12,15 +12,12 @@
 #
 # Creates multi node hadoop cluster on Docker
 
-FROM lewuathe/hadoop-base
+FROM lewuathe/hadoop-base:latest
 MAINTAINER lewuathe
 
 ADD bootstrap.sh /etc/bootstrap.sh
 RUN chown root:root /etc/bootstrap.sh
 RUN chmod 700 /etc/bootstrap.sh
-
-RUN sed s/HOSTNAME/master/ $HADOOP_PREFIX/etc/hadoop/core-site.xml.template > $HADOOP_PREFIX/etc/hadoop/core-site.xml
-RUN sed s/RESOURCEMANAGER/master/ $HADOOP_PREFIX/etc/hadoop/yarn-site.xml.template > $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
 
 ENV BOOTSTRAP /etc/bootstrap.sh
 
