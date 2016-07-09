@@ -4,7 +4,7 @@ services:
   master:
     build: ./hadoop-master
     ports:
-      - "50070:50070"
+      - "9870:9870"
       - "8088:8088"
       - "19888:19888"
       - "8188:8188"
@@ -12,9 +12,30 @@ services:
   slave1:
     build: ./hadoop-slave
     container_name: "slave1"
+    ports:
+      - "9901:9864"
+      - "8041:8042"
   slave2:
     build: ./hadoop-slave
     container_name: "slave2"
+    ports:
+      - "9902:9864"
+      - "8042:8042"
   slave3:
     build: ./hadoop-slave
     container_name: "slave3"
+    ports:
+      - "9903:9864"
+      - "8043:8042"
+  slave4:
+    build: ./hadoop-slave
+    container_name: "slave4"
+    ports:
+      - "9904:9864"
+      - "8044:8042"
+  slave5:
+    build: ./hadoop-slave
+    container_name: "slave5"
+    ports:
+      - "9905:9864"
+      - "8045:8042"
