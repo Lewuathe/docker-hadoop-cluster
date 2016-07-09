@@ -1,6 +1,7 @@
 # docker-hadoop-cluster
 
 Multiple node cluster on Docker for self development.
+docker-hadoop-cluster is suitable for testing your patch for Hadoop which has multiple nodes.
 
 # Pull image
 If you want to use latest hadoop version in docker cluster, all you have to do is pull build images.
@@ -31,7 +32,7 @@ Once you build `hadoop-base` image, you can launch hadoop cluster by using docke
 $ docker-compose up -d
 ```
 
-See http://<Docker IP>:9870 for NameNode or http://<Docker IP>:8088 for ResourceManager.
+See http://localhost:9870 for NameNode or http://localhost:8088 for ResourceManager.
 
 
 When you want to create released hadoop image(it's 2.7.0 currently), you can build with `Dockerfile`
