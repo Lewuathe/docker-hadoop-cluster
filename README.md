@@ -20,7 +20,7 @@ Base image of hadoop service. This image includes JDK, hadoop package configurat
 In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 
 ```bash
-$ cp hadoop-3.0.0-SNAPSHOT.tar.gz hadoop-base
+$ cp hadoop-3.0.0-alpha1-SNAPSHOT.tar.gz hadoop-base
 $ cd hadoop-base
 $ docker build -f Dockerfile-local -t lewuathe/hadoop-base .
 ```
@@ -31,7 +31,7 @@ Once you build `hadoop-base` image, you can launch hadoop cluster by using docke
 $ docker-compose up -d
 ```
 
-See http://<Docker IP>:50070 or http://<Docker IP>:8088.
+See http://<Docker IP>:9870 for NameNode or http://<Docker IP>:8088 for ResourceManager.
 
 
 When you want to create released hadoop image(it's 2.7.0 currently), you can build with `Dockerfile`
