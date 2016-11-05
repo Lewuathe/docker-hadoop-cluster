@@ -1,0 +1,3 @@
+[submodule "hadoop"]
+	path = hadoop
+	url = git://git.apache.org/hadoop.git
