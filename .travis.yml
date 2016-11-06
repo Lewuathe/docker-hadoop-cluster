@@ -11,10 +11,13 @@ services:
 before_install:
   - docker info
   - git submodule update --init
+  -
 
 install:
+  - wget https://protobuf.googlecode.com/files/protobuf-2.5.1.tar.gz
+  - tar -xzvf protobuf-2.5.1.tar.gz
+  - pushd protobuf-2.5.1 && ./configure --prefix=/usr && make && sudo make install && popd
   - cd hadoop
-  - ./start-build-env.sh
   - mvn clean package -DskipTests -Pdist -Dtar
   - exit
   - cp hadoop-dist/target/hadoop-3.0.0-alpha2-SNAPSHOT.tar.gz ../hadoop-base
