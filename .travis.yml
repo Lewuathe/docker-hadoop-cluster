@@ -10,10 +10,13 @@ services:
 
 before_install:
   - docker info
+  - git submodule update --init
 
 install:
   - cd hadoop
+  - ./start-build-env.sh
   - mvn clean package -DskipTests -Pdist -Dtar
+  - exit
   - cp hadoop-dist/target/hadoop-3.0.0-alpha2-SNAPSHOT.tar.gz ../hadoop-base
 
 script:
