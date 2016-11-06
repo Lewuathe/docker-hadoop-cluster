@@ -14,9 +14,9 @@ before_install:
   -
 
 install:
-  - wget https://protobuf.googlecode.com/files/protobuf-2.5.1.tar.gz
-  - tar -xzvf protobuf-2.5.1.tar.gz
-  - pushd protobuf-2.5.1 && ./configure --prefix=/usr && make && sudo make install && popd
+  - wget https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.gz
+  - tar -xzvf protobuf-2.5.0.tar.gz
+  - pushd protobuf-2.5.0 && ./configure --prefix=/usr && make && sudo make install && popd
   - cd hadoop
   - mvn clean package -DskipTests -Pdist -Dtar
   - exit
