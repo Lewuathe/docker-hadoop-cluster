@@ -87,6 +87,48 @@ $ bin/build_cluster.sh --slaves 5 launch
 $ bin/build_cluster.sh --slaves 5 destroy
 ```
 
+docker-hadoop-cluster also uploads the latest image which refers HEAD of trunk. They are deployed on [Docker Hub](https://hub.docker.com/r/lewuathe/).
+If you want to try the trunk (though it can be unstable), `docker-compose.yml` like below is needed. It will launch 3 slave Hadoop cluster.
+
+```
+version: '2'
+
+services:
+  master:
+    image: lewuathe/hadoop-master
+    ports:
+      - "9870:9870"
+      - "8088:8088"
+      - "19888:19888"
+      - "8188:8188"
+    container_name: "master"
+  slave1:
+    image: lewuathe/hadoop-slave
+    container_name: "slave1"
+    depends_on:
+      - master
+    ports:
+      - "9901:9864"
+      - "8041:8042"
+  slave2:
+    image: lewuathe/hadoop-slave
+    container_name: "slave2"
+    depends_on:
+      - master
+    ports:
+      - "9902:9864"
+      - "8042:8042"
+  slave3:
+    image: lewuathe/hadoop-slave
+    container_name: "slave3"
+    depends_on:
+      - master
+    ports:
+      - "9903:9864"
+      - "8043:8042"
+
+```
+
 # Login cluster
 
 ```bash
