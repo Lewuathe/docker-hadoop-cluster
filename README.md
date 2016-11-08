@@ -1,4 +1,4 @@
-# docker-hadoop-cluster
+# docker-hadoop-cluster [![Build Status](https://travis-ci.org/Lewuathe/docker-hadoop-cluster.svg?branch=master)](https://travis-ci.org/Lewuathe/docker-hadoop-cluster)
 
 Multiple node cluster on Docker for self development.
 docker-hadoop-cluster is suitable for testing your patch for Hadoop which has multiple nodes.
