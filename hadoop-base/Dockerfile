@@ -30,7 +30,7 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 # java
 RUN mkdir -p /usr/java/default && \
-     curl -Ls 'http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accept-securebackup-cookie' | \
+     curl -Ls 'http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accept-securebackup-cookie' | \
      tar --strip-components=1 -xz -C /usr/java/default/
 
 #ADD jdk-8u112-linux-x64.tar.gz /usr/java
