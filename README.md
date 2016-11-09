@@ -104,9 +104,11 @@ This script launch EC2 instance and prepare prerequisites to launch docker-hadoo
 
 # Docker Hub
 
-* [hadoop-base](https://hub.docker.com/r/lewuathe/hadoop-base/)
-* [hadoop-master](https://hub.docker.com/r/lewuathe/hadoop-master/)
-* [hadoop-slave](https://hub.docker.com/r/lewuathe/hadoop-slave/)
+| Image name | Pulls | Stars |
+|:-----|:-----|
+| lewuathe/hadoop-base   | [![hadoop-base](https://img.shields.io/docker/pulls/lewuathe/hadoop-base.svg)](https://hub.docker.com/r/lewuathe/hadoop-base/)       | ![hadoop-base](https://img.shields.io/docker/stars/lewuathe/hadoop-base.svg)   |
+| lewuathe/hadoop-master | [![hadoop-master](https://img.shields.io/docker/pulls/lewuathe/hadoop-master.svg)](https://hub.docker.com/r/lewuathe/hadoop-master/) | ![hadoop-master](https://img.shields.io/docker/stars/lewuathe/hadoop-master.svg) |
+| lewuathe/hadoop-slave  | [![hadoop-slave](https://img.shields.io/docker/pulls/lewuathe/hadoop-slave.svg)](https://hub.docker.com/r/lewuathe/hadoop-slave/)    | ![hadoop-slave](https://img.shields.io/docker/stars/lewuathe/hadoop-slave.svg)  |
 
 # License
 
