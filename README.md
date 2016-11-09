@@ -3,27 +3,15 @@
 Multiple node cluster on Docker for self development.
 docker-hadoop-cluster is suitable for testing your patch for Hadoop which has multiple nodes.
 
-# Pull image
-If you want to use latest hadoop version in docker cluster, all you have to do is pull build images.
-Just after that, you can run your cluster on Docker.
-
-```bash
-$ docker pull lewuathe/hadoop-base
-$ docker pull lewuathe/hadoop-master
-$ docker pull lewuathe/hadoop-slave
-```
-
-# Build images
-
-## hadoop-base
+# Build images from your Hadoop source code
 
 Base image of hadoop service. This image includes JDK, hadoop package configurations etc. This image can include your self-build hadoop package.
 In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 
 ```bash
-$ cp hadoop-3.0.0-alpha1-SNAPSHOT.tar.gz hadoop-base
-$ cd hadoop-base
-$ docker build -f Dockerfile-local -t lewuathe/hadoop-base .
+$ cd docker-hadoop-cluster
+$ cp hadoop-3.0.0-alpha2-SNAPSHOT.tar.gz hadoop-base
+$ make
 ```
 
 Once you build `hadoop-base` image, you can launch hadoop cluster by using docker-compose.
@@ -32,60 +20,21 @@ Once you build `hadoop-base` image, you can launch hadoop cluster by using docke
 $ docker-compose up -d
 ```
 
+or
+
+```
+$ make run
+```
+
 See http://localhost:9870 for NameNode or http://localhost:8088 for ResourceManager.
 
-
-When you want to create released hadoop image(it's 2.7.0 currently), you can build with `Dockerfile`
-
-```bash
-$ docker build -t lewuathe/hadoop-base .
+```
+$ make down
 ```
 
-## hadoop-master
+shutdowns your cluster.
 
-This image includes master service such as namenode and resource manager.
-
-```bash
-$ cd hadoop-master
-$ docker build -t lewuathe/hadoop-master .
-```
-
-## hadoop-slave
-
-This image includes slave service such as datanode and node manager.
-
-```bash
-$ cd hadoop-slave
-$ docker build -t lewuathe/hadoop-slave .
-```
-
-Or you can build images with build_cluster.sh command.
-
-```bash
-$ cd docker-hadoop-cluster
-$ bin/build_cluster.sh build
-```
-
-# Running cluster
-
-First master node should be launched.
-
-```bash
-$ docker run -d -p 50070:50070 -p 8088:8088 --net hadoop-network --name master -h master lewuathe/hadoop-master
-```
-
-Second slave node is launched.
-
-```bash
-$ docker run -d --name slave1 -h slave1 --net hadoop-network lewuathe/hadoop-slave
-```
-
-Or you can use build script.
-
-```bash
-$ bin/build_cluster.sh --slaves 5 launch
-$ bin/build_cluster.sh --slaves 5 destroy
-```
+# Build images from the latest trunk
 
 docker-hadoop-cluster also uploads the latest image which refers HEAD of trunk. They are deployed on [Docker Hub](https://hub.docker.com/r/lewuathe/).
 If you want to try the trunk (though it can be unstable), `docker-compose.yml` like below is needed. It will launch 3 slave Hadoop cluster.
