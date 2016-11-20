@@ -63,6 +63,11 @@
         <value>true</value>
     </property>
 
+    <property>
+      <name>yarn.webapp.ui2.enable</name>
+      <value>true</value>
+    </property>
+
     <!-- NAMENODE must be same to RESOURCEMANAGER in this configuration -->
     <!-- Disable due to HDFS initialization timing issue
     <property>
