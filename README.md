@@ -10,7 +10,7 @@ In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 
 ```bash
 $ cd docker-hadoop-cluster
-$ cp /path/to/hadoop-3.0.0-alpha2-SNAPSHOT.tar.gz hadoop-base
+$ cp /path/to/hadoop-3.0.0-alpha3-SNAPSHOT.tar.gz hadoop-base
 $ make
 ```
 
