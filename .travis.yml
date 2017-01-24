@@ -20,7 +20,7 @@ install:
   - ./configure && make && sudo make install && sudo ldconfig
   - cd ../hadoop
   - mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
-  - cp hadoop-dist/target/hadoop-3.0.0-alpha2-SNAPSHOT.tar.gz ../hadoop-base
+  - cp hadoop-dist/target/hadoop-3.0.0-alpha3-SNAPSHOT.tar.gz ../hadoop-base
 
 script:
   - cd ..
