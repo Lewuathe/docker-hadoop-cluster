@@ -4,6 +4,7 @@ sudo: required
 env:
   global:
     - MAVEN_OPTS="-Xmx512M"
+    - PATH="$HOME/build/Lewuathe/docker-hadoop-cluster/apache-maven-3.5.0/bin:$PATH"
 
 services:
   - docker
@@ -18,8 +19,12 @@ install:
   - tar -xzvf protobuf-2.5.0.tar.gz
   - cd protobuf-2.5.0
   - ./configure && make && sudo make install && sudo ldconfig
-  - cd ../hadoop
-  - mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
+  - cd ..
+  - wget http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip
+  - unzip apache-maven-3.5.0-bin.zip
+  - mvn -version
+  - cd hadoop
+  - mvn clean package -DskipTests -Pdist -Dtar
   - cp hadoop-dist/target/hadoop-3.0.0-alpha3-SNAPSHOT.tar.gz ../hadoop-base
 
 script:
