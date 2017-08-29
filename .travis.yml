@@ -25,7 +25,7 @@ install:
   - mvn -version
   - cd hadoop
   - mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
-  - cp hadoop-dist/target/hadoop-3.0.0-alpha4-SNAPSHOT.tar.gz ../hadoop-base
+  - cp hadoop-dist/target/hadoop-3.0.0-beta1-SNAPSHOT.tar.gz ../hadoop-base
 
 script:
   - cd ..

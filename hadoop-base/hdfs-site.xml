@@ -5,6 +5,6 @@
     </property>
     <property>
         <name>dfs.namenode.ec.policies.enabled</name>
-        <value>RS-3-2-64k</value>
+        <value>RS-3-2-1024k</value>
     </property>
 </configuration>
