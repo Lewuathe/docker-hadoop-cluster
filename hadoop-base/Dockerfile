@@ -43,7 +43,7 @@ ENV PATH $PATH:$JAVA_HOME/bin
 RUN mkdir -p /tmp/native
 RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.7.0.tar | tar -x -C /tmp/native
 
-ENV HADOOP_VERSION=3.0.0-beta1-SNAPSHOT
+ENV HADOOP_VERSION=3.0.0-beta1
 ADD hadoop-${HADOOP_VERSION}.tar.gz /usr/local/
 WORKDIR /usr/local
 RUN ln -s /usr/local/hadoop-${HADOOP_VERSION} /usr/local/hadoop
