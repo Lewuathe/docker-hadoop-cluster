@@ -10,7 +10,7 @@ In order to bind, tar.gz package assumed be put under `hadoop-base` directory.
 
 ```bash
 $ cd docker-hadoop-cluster
-$ cp /path/to/hadoop-3.0.0-alpha3-SNAPSHOT.tar.gz hadoop-base
+$ cp /path/to/hadoop-3.0.0-beta1.tar.gz hadoop-base
 $ make
 ```
 
@@ -84,12 +84,12 @@ services:
 $ docker exec -it master bash
 bash-4.1# cd /usr/local/hadoop
 bash-4.1# bin/hadoop version
-Hadoop 3.0.0-SNAPSHOT
+Hadoop 3.0.0-beta1
 Source code repository git://git.apache.org/hadoop.git -r 0c7d3f480548745e9e9ccad1d318371c020c3003
 Compiled by lewuathe on 2015-09-13T01:12Z
 Compiled with protoc 2.5.0
 From source with checksum 9174a352ac823cdfa576f525665e99
-This command was run using /usr/local/hadoop-3.0.0-SNAPSHOT/share/hadoop/common/hadoop-common-3.0.0-SNAPSHOT.jar
+This command was run using /usr/local/hadoop-3.0.0-beta1/share/hadoop/common/hadoop-common-3.0.0-beta1.jar
 ```
 
 # Deploy on EC2
