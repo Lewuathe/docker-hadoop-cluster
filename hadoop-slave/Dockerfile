@@ -19,6 +19,4 @@ COPY bootstrap.sh /etc/
 RUN chown root:root /etc/bootstrap.sh && \
 	chmod 700 /etc/bootstrap.sh
 
-ENV BOOTSTRAP /etc/bootstrap.sh
-
-CMD ["/etc/bootstrap.sh", "-d"]
+CMD /etc/bootstrap.sh -d
