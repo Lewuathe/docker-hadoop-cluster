@@ -56,6 +56,7 @@ ENV HADOOP_YARN_HOME /usr/local/hadoop
 ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
 ENV YARN_CONF_DIR /usr/local/hadoop/etc/hadoop
 ENV HADOOP_LOG_DIR /var/log/hadoop
+ENV PATH $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 RUN mkdir /var/log/hadoop
 
