@@ -28,7 +28,7 @@ install:
   #- cp hadoop-dist/target/hadoop-3.0.0-beta1.tar.gz ../hadoop-base
 
 script:
-  - cd ..
+  #- cd ..
   - make
 
 after_success:
