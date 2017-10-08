@@ -15,9 +15,9 @@
 FROM lewuathe/hadoop-base:latest
 MAINTAINER lewuathe
 
-ADD bootstrap.sh /etc/bootstrap.sh
-RUN chown root:root /etc/bootstrap.sh
-RUN chmod 700 /etc/bootstrap.sh
+COPY bootstrap.sh /etc/
+RUN chown root:root /etc/bootstrap.sh && \
+	chmod 700 /etc/bootstrap.sh
 
 ENV BOOTSTRAP /etc/bootstrap.sh
 

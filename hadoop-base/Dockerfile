@@ -70,7 +70,8 @@ RUN mkdir $HADOOP_LOG_DIR && \
 	mkdir $HADOOP_HOME/input && \
 	cp $HADOOP_HOME/etc/hadoop/*.xml $HADOOP_HOME/input && \
 	sed -i "s!^# export JAVA_HOME.*!export JAVA_HOME=${JAVA_HOME}\nexport H=${HADOOP_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\n!" $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
-	sed -i "s!^# export HADOOP_CONF_DIR.*!export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop/!" $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+	sed -i "s!^# export HADOOP_CONF_DIR.*!export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop/!" $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
+	sed -i "s!\$HADOOP_HOME!${HADOOP_HOME}!g" $HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 RUN $HADOOP_HOME/bin/hdfs namenode -format
 
