@@ -47,7 +47,8 @@ RUN mkdir -p ${JAVA_HOME} && \
 # hadoop
 
 ARG HADOOP_VERSION=3.0.0-beta1
-ARG HADOOP_HOME=/usr/local/hadoop
+ARG HADOOP_HOME_PARENT_DIR=/usr/local
+ARG HADOOP_HOME=${HADOOP_HOME_PARENT_DIR}/hadoop
 
 ENV HADOOP_VERSION     ${HADOOP_VERSION}
 ENV HADOOP_HOME        ${HADOOP_HOME}
@@ -60,9 +61,11 @@ ENV YARN_CONF_DIR      ${HADOOP_HOME}/etc/hadoop
 ENV HADOOP_LOG_DIR     /var/log/hadoop
 ENV PATH 			   $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-RUN mkdir -p ${HADOOP_HOME} && \
-	wget http://apache.javapipe.com/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -O - | \
-	tar --strip-components=1 -xz -C ${HADOOP_HOME}
+ADD hadoop-${HADOOP_VERSION}.tar.gz ${HADOOP_HOME_PARENT_DIR}
+RUN ln -s ${HADOOP_HOME_PARENT_DIR}/hadoop-${HADOOP_VERSION} ${HADOOP_HOME}
+# RUN mkdir -p ${HADOOP_HOME} && \
+# 	wget http://apache.javapipe.com/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -O - | \
+# 	tar --strip-components=1 -xz -C ${HADOOP_HOME}
 
 COPY conf/hadoop/* $HADOOP_HOME/etc/hadoop/
 
