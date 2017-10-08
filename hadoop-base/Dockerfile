@@ -12,7 +12,7 @@
 #
 # Creates multi node hadoop cluster on Docker
 
-FROM sequenceiq/pam:ubuntu-14.04
+FROM ubuntu:17.10
 MAINTAINER lewuathe
 
 USER root
