@@ -14,17 +14,18 @@ before_install:
   - git submodule update --init
 
 install:
-  - sudo apt-get install autoconf automake libtool curl make g++ unzip
-  - wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz
-  - tar -xzvf protobuf-2.5.0.tar.gz
-  - cd protobuf-2.5.0
-  - ./configure && make && sudo make install && sudo ldconfig
-  - cd ..
-  - wget http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip
-  - unzip apache-maven-3.5.0-bin.zip
-  - mvn -version
-  - cd hadoop
-  - mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
+  #- sudo apt-get install autoconf automake libtool curl make g++ unzip
+  #- wget https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz
+  #- tar -xzvf protobuf-2.5.0.tar.gz
+  #- cd protobuf-2.5.0
+  #- ./configure && make && sudo make install && sudo ldconfig
+  #- cd ..
+  #- wget http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip
+  #- unzip apache-maven-3.5.0-bin.zip
+  #- mvn -version
+  #- cd hadoop
+  #- mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
+  #- cp hadoop-dist/target/hadoop-3.0.0-beta1.tar.gz ../hadoop-base
 
 script:
   - cd ..
