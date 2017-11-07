@@ -4,7 +4,7 @@ sudo: required
 env:
   global:
     - MAVEN_OPTS="-Xmx512M"
-    - PATH="$HOME/build/Lewuathe/docker-hadoop-cluster/apache-maven-3.5.0/bin:$PATH"
+    - PATH="$HOME/build/Lewuathe/docker-hadoop-cluster/apache-maven-3.5.2/bin:$PATH"
 
 services:
   - docker
