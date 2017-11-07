@@ -20,7 +20,7 @@ install:
   - cd protobuf-2.5.0
   - ./configure && make && sudo make install && sudo ldconfig
   - cd ..
-  - wget http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip
+  - wget http://ftp.riken.jp/net/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz
   - unzip apache-maven-3.5.0-bin.zip
   - mvn -version
   - cd hadoop
