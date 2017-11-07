@@ -21,7 +21,7 @@ install:
   - ./configure && make && sudo make install && sudo ldconfig
   - cd ..
   - wget http://ftp.riken.jp/net/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz
-  - unzip apache-maven-3.5.0-bin.zip
+  - unzip apache-maven-3.5.2-bin.zip
   - mvn -version
   - cd hadoop
   - mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
