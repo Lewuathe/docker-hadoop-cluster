@@ -24,7 +24,7 @@ install:
   - unzip apache-maven-3.5.2-bin.zip
   - mvn -version
   - cd hadoop
-  - travis_wait mvn clean package -DskipTests -Pdist -Dtar | grep "Building Apache Hadoop"
+  - mvn clean package -DskipTests -Pdist -Dtar | travis_wait grep "Building Apache Hadoop"
   - cp hadoop-dist/target/hadoop-3.2.0-SNAPSHOT.tar.gz ../hadoop-base
 
 script:
