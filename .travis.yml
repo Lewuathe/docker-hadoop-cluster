@@ -28,7 +28,6 @@ install:
   - cp hadoop-dist/target/hadoop-3.2.0-SNAPSHOT.tar.gz ../hadoop-base
 
 script:
-  - cd ..
   - make
 
 after_success:
