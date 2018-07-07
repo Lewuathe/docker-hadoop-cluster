@@ -20,8 +20,8 @@ install:
   - cd protobuf-2.5.0
   - ./configure && make && sudo make install && sudo ldconfig
   - cd ..
-  - wget http://ftp.riken.jp/net/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.zip
-  - unzip apache-maven-3.5.2-bin.zip
+  - wget http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
+  - unzip apache-maven-3.5.4-bin.zip
   - mvn -version
   - cd hadoop
   - mvn clean package -DskipTests -Pdist -Dtar | travis_wait grep "Building Apache Hadoop"
